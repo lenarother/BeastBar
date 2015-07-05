@@ -1,7 +1,7 @@
 """
 > game = Game()
-> game.add_player("Kristian")
-> game.add_player("Lena")
+> kristian = game.add_player("Kristian")
+> lena = game.add_player("Lena")
 > game.start()
 Kristian play a card!
 Your current deck:
@@ -35,14 +35,30 @@ class Game:
     def start(self):
         pass
 
-    def end(start):
+    def end(self):
         pass
 
     def add_player(self):
-        pass
+        return Player()
 
     def get_result(self):
         pass
+
+    def play():
+        """
+        How to handle events?
+        We don't know yet - keep it flexible.
+        Options: 
+        - web interface,
+        - text interface [hottest candidate for now],
+          (event olver in the front end)
+        - GUI
+        - API
+        """
+        for player in players:
+            self.play_card()  # ?
+            self.resolve()
+ 
 
 
 class Player:
@@ -89,4 +105,4 @@ class MoveSolver:
 
 
 class TurnSolver:
-    pass
+    pasS
