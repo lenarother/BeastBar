@@ -1,4 +1,9 @@
 
-from frontend import game_loop
+from frontend import TextFrontend
 
-game_loop()
+frontend = TextFrontend()
+frontend.create_game()
+frontend.run_game()
+frontend.finalize_game()
+
+
