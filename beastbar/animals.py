@@ -1,6 +1,23 @@
-class Animal:
-    pass
+from game import JostlingArea
 
+class Animal:
+
+    @property
+    def name(self):
+        return self.__class__.__name__
+
+    def is_animal(self, name):
+        name = name.lower()
+        name = name.capitalize()
+        return name == self.name 
+
+    def enter_queue(self, queue):
+        """
+        Each animal does it own thing when 
+        entering the que
+        """
+        queue.append(self)
+        return queue
 
 class Skunk(Animal):
     """
@@ -91,4 +108,9 @@ class Lion(Animal):
     Kicks out all monkeys and goes to the front of the queue.
     Immediately is discarded if there already is a lion.
     """
-    pass
+    def enter_queue(self, queue):
+        if any(animal.is_animal('Lion') for animal in queue):
+            return queue
+        queue.remove_animal('Monkey')
+        queue.insert(0, self)
+        return queue
