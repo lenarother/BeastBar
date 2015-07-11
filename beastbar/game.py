@@ -38,8 +38,14 @@ class Game:
     def end(self):
         pass
 
-    def add_player(self):
-        return Player()
+    def is_running(self):
+        return True
+
+    def add_player(self, player):
+        self.players.append(player)
+
+    def next_player(self):
+        return self.players[0]
 
     def get_result(self):
         pass
@@ -63,8 +69,9 @@ class Game:
 
 class Player:
 
-    def __init__(self):
-        self.deck = Deck.get_deck()
+    def __init__(self, name):
+        self.name = name
+        self.hand = Deck().get_hand()
 
     def play_card(self):
         pass
@@ -105,4 +112,4 @@ class MoveSolver:
 
 
 class TurnSolver:
-    pasS
+    pass

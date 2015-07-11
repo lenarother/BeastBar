@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from game import Game
+from game import Game, Player
 
 ANIMALS = {
     "1": "Skunks",
@@ -14,7 +14,7 @@ class TextFrontend:
     def __init__(self):
         self.game = None
 
-    def enter_animal(self):
+    def enter_animal(self, player):
         for num in ANIMALS:
             print("%s\t%s" % (num, ANIMALS[num]))
         print("x\tEXIT")
@@ -38,6 +38,8 @@ class TextFrontend:
             player = self.game.next_player()
             self.print_queue()
             animal = self.enter_animal(player)
+            if animal == 'x':
+                exit()
             print ("a %s enters the queue." % animal)
             player.play_card(animal)
 
