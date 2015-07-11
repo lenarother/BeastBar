@@ -88,8 +88,14 @@ class Deck(list):
     def play_card(self):
         pass
 
-class JostlingArea:
-    pass
+class JostlingArea(list):
+
+    def has_animal(self, animal_name):
+        for card in self:
+            if card.is_animal(animal_name):
+                return True
+         return False
+ 
 
 
 class BeastyBar:
@@ -105,4 +111,4 @@ class MoveSolver:
 
 
 class TurnSolver:
-    pasS
+    pass
