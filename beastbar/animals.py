@@ -1,7 +1,7 @@
 class Animal:
     pass
 
-class Skunks(Animal):
+class Skunk(Animal):
     """
     A skunk expels all animals of the two stronegest
     currently displayed species, but never other skunks.
