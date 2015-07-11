@@ -24,28 +24,42 @@ Lena: 4 animals in the bar (15 points)
 The winner is Kristian! Congratulations!
 """
 
+class IllegalAction(Exception): pass
+
 class Game:
 
     def __init__(self):
+        self._running = False
+        self._player_gen = None
         self.players = []
         self.queue = JostlingArea()
         self.bar = BeastyBar()
         self.loosers = ThatsIt()
 
     def start(self):
-        pass
+        self._running = True
 
     def end(self):
-        pass
+        self._running = False
 
     def is_running(self):
-        return True
+        return self._running
 
     def add_player(self, player):
-        self.players.append(player)
+        if not self._running:
+            self.players.append(player)
+            self._player_gen = self._generate_players()
+        else:
+            raise IllegalAction("Cannot add player. Game already running.")
+
+    def _generate_players(self):
+        while True:
+            for p in self.players:
+                if p.has_cards_left():
+                    yield p
 
     def next_player(self):
-        return self.players[0]
+        return next(self._player_gen)
 
     def get_result(self):
         pass
@@ -66,15 +80,26 @@ class Game:
             self.resolve()
  
 
-
 class Player:
 
     def __init__(self, name):
         self.name = name
-        self.hand = Deck().get_hand()
+        self.deck = Deck()
+        self.hand = self.deck.get_hand()
 
-    def play_card(self):
-        pass
+    def get_hand_names(self):
+        return ['Hippo', 'Lion', 'Skunk', 'Zebra'] # !!!
+        names = [animal.name for animal in self.hand]
+
+    def play_card(self, animal):
+        if not animal in self.get_hand_names():
+            raise Exception("Player %s has no animal '%' in his hand." % (self.name, animal))
+        animal.enter_queue()
+
+    def has_cards_left(self):
+        return True
+        if len(self.hand) > 0:
+            return True
 
 
 class Deck(list):

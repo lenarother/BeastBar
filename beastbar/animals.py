@@ -1,6 +1,11 @@
 class Animal:
     pass
 
+    def enter_queue(self):
+        #KR: 2015/07/11 23:18 don't know what Player should call when a card is played.
+        # For now, it's this method
+        print('ANIMAL ENTERS QUEUE: %s' % (str(self)))
+
 class Skunks(Animal):
     """
     A skunk expels all animals of the two stronegest
