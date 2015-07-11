@@ -123,11 +123,14 @@ class Deck(list):
 class JostlingArea(list):
 
     def has_animal(self, animal_name):
-        for card in self:
-            if card.is_animal(animal_name):
-                return True
-         return False
- 
+        any(card.is_animal(animal_name) for card in self)
+            
+    def remove_animal(self, animal_name):
+        x = len(self)
+        while x > 0:
+            if self[x-1].is_animal(animal_name):
+                self.pop(x-1)
+            x -= 1 
 
 
 class BeastyBar:
