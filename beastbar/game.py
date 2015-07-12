@@ -133,15 +133,11 @@ class JostlingArea(list):
             x -= 1 
 
 
-class BeastyBar:
+class BeastyBar(list):
     pass
 
 
-class ThatsIt:
-    pass
-
-
-class MoveSolver:
+class ThatsIt(list):
     pass
 
 
