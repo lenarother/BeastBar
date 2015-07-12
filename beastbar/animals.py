@@ -2,6 +2,11 @@ from game import JostlingArea
 
 class Animal:
 
+    def __init__(self):
+        self.strength = 0
+        self.has_recurring_action = False
+        self.is_new = False
+
     @property
     def name(self):
         return self.__class__.__name__
@@ -13,11 +18,18 @@ class Animal:
 
     def enter_queue(self, queue):
         """
-        Each animal does it own thing when 
-        entering the que
+        Aimal is added at the end of the queue
         """
         queue.append(self)
         return queue
+
+    def execute_action(self):
+        """
+        Each animal does its own thing.
+        """
+        # discuss with KR
+        pass
+
 
 class Skunk(Animal):
     """
